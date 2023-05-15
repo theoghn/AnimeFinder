@@ -1,0 +1,33 @@
+body {
+    background-color: pink;
+  }
+  form {
+    margin: 20px auto;
+    padding: 20px;
+    border: 2px solid white;
+    border-radius: 10px;
+    width: 400px;
+  }
+  label {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  input[type="file"] {
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  #image-preview {
+    width: 20vh;
+    height: 20vh;
+
+  }
+  video {
+    height: 20vh;
+  }
+  @media screen {
+    .choose {
+      color: rgb(0, 117, 117);
+    }
+  }
