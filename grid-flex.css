@@ -1,0 +1,36 @@
+.flex{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .grid {
+    width: 70%;
+    height: 100%;
+    display: grid;
+    row-gap: 5px;
+    visibility: hidden;
+    grid-template-rows: 5vh 5vh;
+    grid-template-areas: 
+      "header "
+      "main ";
+  }
+  .grid div:first-child {
+    grid-area: header;
+    background: lightblue;
+  }
+  .item.b {
+    grid-area: main;
+    background: lightcoral;
+  
+  }
+  body:after{
+    content: "Credits to trace.moe API";
+    /* show on bottom of page */
+    position: absolute;
+    bottom: 0;
+  }
+
+  

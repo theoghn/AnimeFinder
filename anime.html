@@ -2,16 +2,27 @@
 <html>
 <head>
   <title>Image Upload Example</title>
+  <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="anime.css">
+  <link rel="stylesheet" href="grid-flex.css">
 </head>
 <body>
+<section class="flex" >
+
   <form>
     <label class="choose" for="file-input">Choose an anime image:</label>
     <input type="file" id="file-input" accept="image/*">
     <div id="image-preview"></div>
   </form>
-  <video autoplay="4.0"></video>
-  
+  <div class="grid">
+    <div class="nume"></div>
+    <div class="item b"></div>
+    <div class="item d"></div>
+  </div>
+
+</section>
   <script src="anime.js"></script>
 </body>
 </html>
