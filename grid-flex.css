@@ -7,30 +7,83 @@
   }
 
   .grid {
+    margin: 20px auto;
+    padding: 20px;
+    border: 2px solid rgb(255, 255, 255);
+    background-color: aliceblue;
+    border-radius: 10px;
     width: 70%;
     height: 100%;
     display: grid;
     row-gap: 5px;
-    visibility: hidden;
-    grid-template-rows: 5vh 5vh;
+    opacity: 0;
+    grid-template-rows: 1fr 1fr;
     grid-template-areas: 
       "header "
       "main ";
+    transition: opacity 1s ease-in-out
+  }
+  .grid.fade-in {
+    opacity: 0;
+    animation: fade-in 1s ease-in forwards;
+  }
+  .grid.fade-out {
+    opacity: 1;
+    animation: fade-out 1s ease-in forwards;
+  }
+  
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+      transform: translateY()0;
+    }
+    to {
+      opacity: 0;
+      transform: translateY(200px);
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
   .grid div:first-child {
     grid-area: header;
-    background: lightblue;
+    /* background: lightblue; */
   }
-  .item.b {
+  #episode {
     grid-area: main;
-    background: lightcoral;
+    /* background: rgb(104, 165, 221); */
   
   }
   body:after{
     content: "Credits to trace.moe API";
-    /* show on bottom of page */
-    position: absolute;
     bottom: 0;
+    position: absolute;
+    animation: myAnimation 20s ease-in-out infinite;
   }
 
+
+  @keyframes myAnimation {
+    0% {
+      color: blue;
+      transform: translateX(5vw);
+      opacity: 1;
+    }
+    50% {
+      color: rgb(255, 75, 84);
+      transform: translateX(80vw);
+      opacity: 0.5;
+    }
+    100% {
+      color: blue;
+      transform: translateX(5vw);
+      opacity: 1;
+    }
+  }
   

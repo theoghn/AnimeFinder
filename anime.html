@@ -8,18 +8,30 @@
   <link rel="stylesheet" href="anime.css">
   <link rel="stylesheet" href="grid-flex.css">
 </head>
+
 <body>
+  <label for="theme-selector">Select Theme:</label>
+  <div class="dropdown">
+    <button class="dropbtn">Pink</button>
+    <div class="dropdown-content">
+    <a href="#" id="purple">Purple</a>
+    <a href="#" id="pink">Pink</a>
+    </div>
+  </div>
+
+
 <section class="flex" >
 
   <form>
     <label class="choose" for="file-input">Choose an anime image:</label>
     <input type="file" id="file-input" accept="image/*">
-    <div id="image-preview"></div>
+    <div id="image-preview"><video muted autoplay id="my-video" 
+      src="" alt="image-preview"></video></div>
   </form>
   <div class="grid">
-    <div class="nume"></div>
-    <div class="item b"></div>
-    <div class="item d"></div>
+    <div class="nume"> </div>
+    <div id="episode"></div>
+    <div id="time">time:</div>
   </div>
 
 </section>
