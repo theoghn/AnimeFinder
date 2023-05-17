@@ -6,6 +6,8 @@ const nameAnime = document.getElementsByClassName('nume');
 const episodeAnime = document.getElementById('episode');
 const grid = document.querySelector('.grid');
 
+const linke= document.getElementsByClassName('links');
+
 fileInput.addEventListener('change', event => {
   console.log(localStorage);
   const file = event.target.files[0];
@@ -38,16 +40,17 @@ fileInput.addEventListener('change', event => {
 
           myVideo.src = gifUrl;
 
+          linke[0].href = gifUrl;
 
           const name = data.result[0].anilist.title.romaji;
-          console.log(name);
+
           //show anime name in html
           nameAnime[0].innerHTML ="Anime:"+ name;
           //make grid class visible
           localStorage.setItem('name', name);
-
-          
-          const number = data.result[0].episode;
+          // array methods
+          const arr= data.result.reverse().pop();
+          const number = arr.episode;
           //show episode number in html
           if (number == null) {
             localStorage.setItem('number', "This is the movie version of the anime");
@@ -58,12 +61,10 @@ fileInput.addEventListener('change', event => {
             localStorage.setItem('number', number);
           }
 
-          const grid = document.getElementsByClassName('grid');
-          grid[0].style.visibility = "visible";
         } else {
           console.error('No results found');
         }
-        console.log(localStorage);
+   
         
         setTimeout(() => {
           grid.classList.remove('fade-in');
@@ -90,19 +91,28 @@ fileInput.addEventListener('change', event => {
 const savedImage = localStorage.getItem('video');
 const savedName= localStorage.getItem('name');
 const savedNumber = localStorage.getItem('number');
-console.log(myVideo.src);
+
 
 //on load do something
 
-  
+var replays =1;
 
 window.addEventListener('load', function() {
   if (savedImage&& episodeAnime.innerHTML === "") {
   
     myVideo.src = savedImage;
+    console.log();
+    console.log(linke[0].href);
+    linke[0].href = savedImage;
+    console.log(linke[0].href);
+
     
-    nameAnime[0].innerHTML ="Anime: "+ savedName;
-    episodeAnime.innerHTML ="Episode number: "+ savedNumber;
+    nameAnime[0].innerHTML ="Anime: "+ savedName.toLowerCase();
+    if (savedNumber == "This is the movie version of the anime") 
+      episodeAnime.innerHTML = savedNumber;
+    else
+      episodeAnime.innerHTML ="Episode number: "+ savedNumber;
+
   
     
     setTimeout(() => {
@@ -110,9 +120,23 @@ window.addEventListener('load', function() {
       grid.classList.add('fade-in');
       
     }, 1000);
-    setInterval(replayVideo, 5000)
-  
+    const replay = setInterval(replayVideo, 5000);
+    document.addEventListener('keydown', function(event) {
+      if (event.code === 'Space') {
+        if(replays === 1){
+          clearInterval(replay);
+          replays = 0;
+        }
+        else{
+          replay = setInterval(replayVideo, 5000);
+          replays = 1;
+        }
+      }
+    });
+    
   }
+
+  
 });
 
 
@@ -147,3 +171,50 @@ function replayVideo() {
   myVideo.play(); // Start playing the video
 }
 
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+linke[0].addEventListener("click", function(event){
+  event.preventDefault();
+  var url =this.href;
+  window.open(url, '_blank');
+  event.stopPropagation();
+});
+
+function handleClick(event) {
+  const text = event.currentTarget;
+  text.style.color= getRandomColor();
+
+  const newSize = Math.floor(Math.random() * 10) + 10;
+  text.style.fontSize = `${newSize}px`;
+
+
+  var rect = myVideo.getBoundingClientRect();
+  console.log(rect.width);  // The width of the image in pixels
+  console.log(rect.height);
+  var time = new Date().getFullYear();
+  alert("Good luck in the remaining of " + time + "\n" +
+    "The width of the image is: " + rect.width + "px"
+  + " and the height is: " + rect.height + "px "
+  + "Your new color is: " + text.style.color + "\n"
+  + "Your new font size is: " + text.style.fontSize );
+}
+
+
+function validateForm() {
+  const choose = document.getElementsByClassName('choose')[0];
+  let x = document.forms["myForm"]["fname"].value;
+
+  if (x != "") {
+    document.forms["myForm"]["fname"].value = "";
+    choose.innerHTML = "Choose an anime image, "+x;
+  }
+  
+
+  
+}

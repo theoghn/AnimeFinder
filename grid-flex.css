@@ -19,8 +19,8 @@
     opacity: 0;
     grid-template-rows: 1fr 1fr;
     grid-template-areas: 
-      "header "
-      "main ";
+      "header header link"
+      "main main main";
     transition: opacity 1s ease-in-out
   }
   .grid.fade-in {
@@ -52,6 +52,10 @@
       transform: translateY(0);
     }
   }
+  .link{
+    grid-area:link;
+  }
+
   .grid div:first-child {
     grid-area: header;
     /* background: lightblue; */

@@ -10,31 +10,41 @@
 </head>
 
 <body>
-  <label for="theme-selector">Select Theme:</label>
-  <div class="dropdown">
-    <button class="dropbtn">Pink</button>
-    <div class="dropdown-content">
-    <a href="#" id="purple">Purple</a>
-    <a href="#" id="pink">Pink</a>
+  <header>
+    <label for="theme-selector">Select Theme:</label>
+    <div class="dropdown">
+      <button class="dropbtn">Pink</button>
+      <div class="dropdown-content">
+      <a href="#" id="purple">Purple</a>
+      <a href="#" id="pink">Pink</a>
+      </div>
     </div>
-  </div>
+  </header>
+  
 
-
+<main>
 <section class="flex" >
 
-  <form>
-    <label class="choose" for="file-input">Choose an anime image:</label>
-    <input type="file" id="file-input" accept="image/*">
+  <form name="myForm" onsubmit="return false" >
+    <label class="choose" for="file-input">Choose an anime image</label>
+    <input type="file" id="file-input" accept="image/*" >
+    <input placeholder = "your name"  required type="text" id="fname" name="fname"><br><br>
+    
+    <input type="button" onclick="validateForm()" value="Submit">
     <div id="image-preview"><video muted autoplay id="my-video" 
       src="" alt="image-preview"></video></div>
   </form>
-  <div class="grid">
+
+  <div  onclick="handleClick(event)"  class="grid">
     <div class="nume"> </div>
+    <a class="links" href="https://github.com/theoghn/AnimeFinder/blob/main/anime.js">link</a>
     <div id="episode"></div>
-    <div id="time">time:</div>
+    <div id="time">Click the area to make it change</div>
   </div>
 
 </section>
   <script src="anime.js"></script>
+
+</main>
 </body>
 </html>
