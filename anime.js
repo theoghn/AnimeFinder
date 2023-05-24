@@ -9,7 +9,7 @@ const grid = document.querySelector('.grid');
 const linke= document.getElementsByClassName('links');
 
 fileInput.addEventListener('change', event => {
-  console.log(localStorage);
+  // console.log(localStorage);
   const file = event.target.files[0];
   
   
@@ -30,7 +30,7 @@ fileInput.addEventListener('change', event => {
     })
     .then(response => response.json())
     .then(data => {
-      console.log(data);
+      // console.log(data);
       if (data.result[0].video) {
           
           
@@ -101,10 +101,10 @@ window.addEventListener('load', function() {
   if (savedImage&& episodeAnime.innerHTML === "") {
   
     myVideo.src = savedImage;
-    console.log();
-    console.log(linke[0].href);
+    // console.log();
+    // console.log(linke[0].href);
     linke[0].href = savedImage;
-    console.log(linke[0].href);
+    // console.log(linke[0].href);
 
     
     nameAnime[0].innerHTML ="Anime: "+ savedName.toLowerCase();
@@ -138,6 +138,28 @@ window.addEventListener('load', function() {
 
   
 });
+var create = 1;
+function createe() {
+  var div = document.querySelector(".grid");
+  
+  if (create === 1)
+  {
+    var newDiv = document.createElement("div");
+    newDiv.id = "new";
+    newDiv.innerHTML = "Click ME!";
+    div.appendChild(newDiv);
+    create = 0;
+  }
+  else{
+    var newDiv = document.getElementById("new");
+    div.removeChild(newDiv);
+    create = 1;
+  }
+  // console.log(create);
+  
+}
+setInterval(createe, 5000);
+
 
 
 
@@ -157,13 +179,6 @@ pinkLink.addEventListener('click', function() {
   document.body.style.backgroundColor ="pink";
 });
 
-function makeImage(img) {
-    var image = document.createElement("img");
-    image.src = img;
-    image.style.width = "20%";
-    image.style.height = "auto";
-    return image;
-}
 
 
 function replayVideo() {
@@ -195,8 +210,8 @@ function handleClick(event) {
 
 
   var rect = myVideo.getBoundingClientRect();
-  console.log(rect.width);  // The width of the image in pixels
-  console.log(rect.height);
+  // console.log(rect.width);  // The width of the image in pixels
+  // console.log(rect.height);
   var time = new Date().getFullYear();
   alert("Good luck in the remaining of " + time + "\n" +
     "The width of the image is: " + rect.width + "px"
